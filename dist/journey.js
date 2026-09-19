@@ -1,0 +1,13 @@
+// Three quiet worlds connected by the visitor's scroll position.
+(()=>{
+ const worlds=document.querySelector('.worlds'),stage=worlds.querySelector('.world-stage');
+ const panels=[...worlds.querySelectorAll('.world-panel')],links=[...worlds.querySelectorAll('.world-top a')];
+ const names=['chess','yoga','research'],colors=['#edf0ee','#e9efdf','#e5f0f1'];let active=-1,queued=false;
+ function paint(){queued=false;const box=worlds.getBoundingClientRect();const p=Math.max(0,Math.min(.999,-box.top/(worlds.offsetHeight-innerHeight)));const n=Math.min(2,Math.floor(p*3));stage.style.setProperty('--journey-progress',p);stage.style.setProperty('--scene-y',`${paused?0:(p*3-n-.5)*-45}px`);if(n===active)return;active=n;stage.style.setProperty('--world-bg',colors[n]);panels.forEach((panel,i)=>{panel.classList.toggle('is-current',i===n);panel.inert=i!==n;panel.setAttribute('aria-hidden',String(i!==n))});links.forEach((link,i)=>link.setAttribute('aria-current',String(i===n)));document.querySelector('#world-caption').textContent=`0${n+1} / ${names[n].toUpperCase()}`;}
+ function schedule(){if(!queued){queued=true;requestAnimationFrame(paint)}}addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule);paint();
+ links.forEach((link,i)=>link.addEventListener('click',e=>{e.preventDefault();const top=scrollY+worlds.getBoundingClientRect().top;scrollTo({top:top+(worlds.offsetHeight-innerHeight)*(i/3+.03),behavior:paused?'instant':'smooth'});history.replaceState(null,'',link.hash)}));
+ const originalSelect=selectCategory;selectCategory=function(id){const collection=document.querySelector('#collection');collection.dataset.theme=id;originalSelect(id);const grid=document.querySelector('#award-grid');grid.classList.remove('collection-switch');void grid.offsetWidth;grid.classList.add('collection-switch')};
+ worlds.querySelectorAll('[data-world-collection]').forEach(button=>button.onclick=()=>{selectCategory(button.dataset.worldCollection);document.querySelector('#collection').scrollIntoView({behavior:paused?'instant':'smooth'});document.querySelector('#tab-'+category).focus({preventScroll:true})});
+ document.querySelector('#world-puzzle').onclick=openChess;
+ let breathTimer;const breath=document.querySelector('#breath-control');breath.onclick=()=>{const on=breath.getAttribute('aria-pressed')!=='true';breath.setAttribute('aria-pressed',String(on));document.querySelector('.zen-scene').classList.toggle('breathing',on);clearInterval(breathTimer);let inhale=true;const label=document.querySelector('#breath-label');label.textContent=on?'Breathe in, gently.':'';if(on)breathTimer=setInterval(()=>{inhale=!inhale;label.textContent=inhale?'Breathe in, gently.':'And breathe out.'},4000)};
+})();
