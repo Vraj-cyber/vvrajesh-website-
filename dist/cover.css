@@ -1,0 +1,18 @@
+/* Editorial cover: classical serif, Helvetica, and a warm gallery frame. */
+.entrance-sequence .cinematic-hero{border:7px solid #fff9ed;border-radius:24px;overflow:hidden;box-shadow:0 20px 65px #42231626;background:#663d2c}
+.cinema-sky{background:radial-gradient(ellipse at 70% 37%,#ceaf79 0%,#a5784b 32%,#85502f 57%,#432d25 100%)}
+.cinema-sky:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#30241d66,transparent 70%),radial-gradient(ellipse at 20% 100%,#af573e80,transparent 55%);pointer-events:none}
+.cloud-bank{opacity:.5;filter:blur(35px)}
+.cloud-left{background:radial-gradient(ellipse at 70% 30%,#edc69880,transparent 40%),radial-gradient(ellipse at 30% 60%,#78412de6 15%,#a7684080,transparent 69%)}
+.site-header{top:30px;left:6%;right:6%;border:0;border-bottom:1px solid #fff5df38;border-radius:0;background:transparent;backdrop-filter:none;padding:0 0 18px;height:62px}
+.site-header nav,.site-header .header-actions{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+.cinematic-hero .hero-topline{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:.24em;color:#fff0d9}
+.cinematic-hero h1{font-family:'Apoc Revelations','Bodoni MT',Didot,'Times New Roman',serif;font-style:italic;font-weight:400;letter-spacing:-.055em;font-size:clamp(80px,9.2vw,145px);line-height:1.06;margin:28px 0 25px;color:#fff9ef;text-shadow:none}
+.cinematic-hero .name-period{color:inherit}
+.cinematic-hero .hero-story h2{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(26px,3.1vw,48px);font-style:normal;font-weight:750;line-height:1.06;letter-spacing:-.045em;text-transform:uppercase;max-width:620px;color:#fff9ef;margin:0 0 30px}
+.cinematic-hero .hero-story h2 em{font:inherit;letter-spacing:inherit}
+.cinematic-hero .hero-bottom{max-width:49%}
+.cinematic-hero .primary{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#fffaf1;color:#403326;border-color:#fffaf1;border-radius:4px;font-size:12px;font-weight:600;padding:16px 23px;letter-spacing:0}
+.cinematic-hero .hero-art{right:1%;top:14%;width:49%;height:77%}
+.cinematic-hero .hero-end{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#fff4e4}
+@media(max-width:850px){.entrance-sequence .cinematic-hero{border-width:5px;border-radius:18px;padding-top:140px;min-height:1020px}.site-header{top:25px}.cinematic-hero h1{font-size:clamp(66px,15vw,115px);max-width:100%}.cinematic-hero .hero-story h2{font-size:clamp(25px,5.4vw,40px);max-width:610px}.cinematic-hero .hero-bottom{max-width:100%}.cinematic-hero .hero-art{right:2%;top:auto;bottom:75px;width:96%;height:400px}.cinematic-hero .hero-topline{font-size:9px}}
