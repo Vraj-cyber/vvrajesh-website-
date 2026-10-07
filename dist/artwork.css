@@ -1,0 +1,11 @@
+.cinema-sky{background:#614326 url('assets/painted-cover.jpg') center/cover no-repeat;transform:translate3d(0,calc(var(--entrance-progress,0)*85px),0) scale(calc(1.02 + var(--entrance-progress,0)*.09));transform-origin:center;will-change:transform}
+.cinema-sky:after{background:linear-gradient(90deg,#1e170e9c 0%,#241a1140 55%,#21170b35),linear-gradient(0deg,#21150d55,transparent 40%)}
+.cinema-sky .cloud-bank{display:none}.cinema-sky .sky-light{opacity:.12}
+.cinematic-hero .hero-art canvas{filter:sepia(1) saturate(.4) brightness(2.4);background:radial-gradient(ellipse,#35260d35,transparent 65%)}
+.art-interlude{--art-progress:0;position:relative;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:8%;padding:100px 10%;min-height:850px;overflow:hidden;background:#000;color:#d6b777}
+.art-copy{opacity:calc(.3 + var(--art-progress)*.7);transform:translateY(calc((1 - var(--art-progress))*45px));transition:opacity .15s;max-width:640px}
+.art-copy h2{font:400 clamp(42px,5.2vw,78px)/1.07 Georgia,serif;letter-spacing:-.05em;margin:30px 0}.art-copy h2 em{font-weight:400;color:#f2dfb4}.art-copy>p:not(.eyebrow){font-size:16px;line-height:1.8;color:#b7aa91;max-width:360px}.art-copy>a{display:inline-block;margin:25px 25px 0 0;color:#dac18a;font-size:12px;text-underline-offset:6px}
+.hands-frame{margin:0;transform:translateY(calc((1 - var(--art-progress))*95px)) rotate(calc((1 - var(--art-progress))*-5deg));opacity:calc(.2 + var(--art-progress)*.8);transform-origin:center;will-change:transform}.hands-frame a{display:block}.hands-frame img{display:block;width:100%;max-width:390px;max-height:700px;object-fit:contain;margin:auto;transition:transform .5s}.hands-frame a:hover img{transform:scale(1.025)}
+@media(max-width:850px){.cinema-sky{background-position:58% center}.art-interlude{grid-template-columns:1fr;padding:75px 8%;gap:40px;min-height:0}.hands-frame img{max-height:560px;width:auto;max-width:100%}.art-copy h2{font-size:48px}}
+@media(prefers-reduced-motion:reduce){.cinema-sky,.art-copy,.hands-frame{transform:none!important;opacity:1!important}}
+.motion-paused .cinema-sky,.motion-paused .art-copy,.motion-paused .hands-frame{transform:none!important;opacity:1!important}
