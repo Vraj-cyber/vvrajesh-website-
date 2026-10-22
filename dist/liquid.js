@@ -13,7 +13,7 @@ async function start(){if(started)return;started=true;
  image.src='https://cdn.21st.dev/assets/mirror/a1/a1fa387b6e417b26a25f317559c87cce4d241c1052c52a2b3bc2966b2aaf9b65.webp';
  try{await image.decode();const {LiquidEngine}=await import('./liquid-engine.js');
  engine=new LiquidEngine(canvas,{interactive:!quiet(),strength:1,radius:220,density:.5,dotSize:1,spread:1,turbulence:1,returnSpeed:1,streaks:true,restStyle:'image',ambient:true,ambientIntensity:.18,speed:1,intro:false,reducedMotion:quiet(),bg:[.067,.067,.063],imgBg:null,liquid:1},fallback);
- engine.onFirstFrame=()=>{stage.dataset.renderState='ready';if(!failed)stage.classList.add('ready');};resize();engine.setImage(image);stage.dataset.renderState='initialized';sync();
+ engine.onFirstFrame=()=>{stage.dataset.renderState='ready';if(!failed)stage.classList.add('ready');};resize();engine.setImage(image);resize();if(!failed){stage.classList.add('ready');stage.dataset.renderState='ready';}sync();
  }catch(error){console.warn("Liquid sculpture fallback:",error.message);fallback();stage.dataset.renderState=error.message;if(!image.naturalWidth){stage.hidden=true;art.classList.remove('liquid-active');choice.setAttribute('aria-pressed','false');document.querySelector('[data-form="0"]').click();choice.textContent='Liquid unavailable';}}
 }
 choice.addEventListener('click',()=>{active=true;stage.hidden=false;art.classList.add('liquid-active');document.querySelectorAll('[data-form]').forEach(b=>b.setAttribute('aria-pressed','false'));choice.setAttribute('aria-pressed','true');start();resize();sync();});
@@ -24,4 +24,5 @@ new ResizeObserver(resize).observe(stage);
 new IntersectionObserver(es=>{visible=es[0].isIntersecting;sync();}).observe(art);
 new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['class']});mq.addEventListener('change',sync);document.addEventListener('visibilitychange',sync);
 addEventListener('pagehide',()=>engine?.setVisible(false));addEventListener('pageshow',sync);
+
 
